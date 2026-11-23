@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Websites for Local Businesses — Live in 48 Hours</title>
+<meta name="description" content="Professional, mobile-friendly websites and web apps for local businesses. Free preview first, live in 48 hours." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================================
+     EDIT YOUR DETAILS IN THE SITE OBJECT IN THE <script> AT THE BOTTOM
+     ============================================================ */
+  :root{
+    --bg:#f6f3ee; --paper:#fffdf9; --ink:#141414; --ink-2:#4a4744; --line:#e3ddd3;
+    --accent:#ff5a1f; --accent-ink:#fff; --accent-soft:#ffe7dc; --green:#1f9d55;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.display{font-family:"Bricolage Grotesque",Inter,sans-serif;line-height:1.05;letter-spacing:-.02em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  section{padding:96px 0}
+  .eyebrow{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h2{font-size:clamp(32px,4.5vw,52px);font-weight:800;max-width:720px}
+  .lead{font-size:18px;color:var(--ink-2);max-width:620px;margin-top:16px}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;font-weight:600;font-size:16px;border:2px solid var(--ink);transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;background:none;font-family:inherit;color:var(--ink)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--ink)}
+  .btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .btn-primary:hover{box-shadow:0 6px 0 #c23d0c}
+  .btn-dark{background:var(--ink);color:#fff}
+  .btn svg{width:20px;height:20px}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(246,243,238,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{font-family:"Bricolage Grotesque";font-weight:800;font-size:22px;display:flex;align-items:center;gap:10px}
+  .logo-mark{width:34px;height:34px;border-radius:10px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:16px}
+  .nav-links{display:flex;gap:28px;font-weight:500;font-size:15px;color:var(--ink-2)}
+  .nav-links a:hover{color:var(--ink)}
+  nav .btn{padding:10px 18px;font-size:14px}
+  @media(max-width:820px){.nav-links{display:none}}
+
+  /* Hero */
+  .hero{padding:72px 0 88px}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);padding:7px 14px;border-radius:999px;font-size:14px;font-weight:500;margin-bottom:26px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(31,157,85,.18);animation:pulse 2s infinite}
+  @keyframes pulse{50%{box-shadow:0 0 0 8px rgba(31,157,85,.05)}}
+  .hero h1{font-size:clamp(44px,6.6vw,84px);font-weight:800}
+  .hero h1 .hl{color:var(--accent);position:relative;white-space:nowrap}
+  .hero h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.12em;background:var(--accent-soft);z-index:-1}
+  .hero p{font-size:19px;color:var(--ink-2);margin:24px 0 34px;max-width:560px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .trust{display:flex;gap:28px;margin-top:40px;flex-wrap:wrap}
+  .trust div{font-size:14px;color:var(--ink-2)}
+  .trust strong{display:block;font-family:"Bricolage Grotesque";font-size:28px;color:var(--ink);font-weight:800}
+  .hero-visual{position:relative;height:440px}
+  .float{position:absolute;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 20px 50px -20px rgba(0,0,0,.18)}
+  .float-1{inset:0 40px 70px 0;overflow:hidden}
+  .float-2{right:0;bottom:0;width:230px;padding:18px}
+  .float-3{right:-14px;top:46px;padding:12px 16px;display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600}
+  .wa-ico{width:30px;height:30px;border-radius:50%;background:#25d366;display:grid;place-items:center;color:#fff}
+  .wa-ico svg{width:17px;height:17px}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-visual{height:380px}}
+
+  /* Mini browser mockups (pure CSS) */
+  .browser{height:100%;display:flex;flex-direction:column}
+  .bar{height:34px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 14px;flex-shrink:0;background:#faf7f2}
+  .bar i{width:10px;height:10px;border-radius:50%;background:#e0d9ce}
+  .bar span{margin-left:10px;font-size:11px;color:#9a948b;background:#fff;border:1px solid var(--line);border-radius:6px;padding:2px 10px}
+  .screen{flex:1;padding:18px;display:flex;flex-direction:column;gap:10px;position:relative}
+  .s-nav{display:flex;justify-content:space-between;align-items:center}
+  .s-logo{width:56px;height:10px;border-radius:4px}
+  .s-links{display:flex;gap:6px}.s-links b{width:22px;height:6px;border-radius:3px;background:currentColor;opacity:.25}
+  .s-h{height:16px;border-radius:5px;width:78%;margin-top:14px}
+  .s-h2{height:16px;border-radius:5px;width:55%}
+  .s-p{height:7px;border-radius:3px;width:70%;opacity:.2;background:currentColor}
+  .s-btn{width:80px;height:22px;border-radius:999px;margin-top:6px}
+  .s-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:auto}
+  .s-cards div{height:52px;border-radius:8px;opacity:.9}
+
+  /* Problem strip */
+  .strip{background:var(--ink);color:#fff;padding:26px 0;overflow:hidden}
+  .marquee{display:flex;gap:48px;white-space:nowrap;animation:scroll 28s linear infinite;font-family:"Bricolage Grotesque";font-size:22px;font-weight:700}
+  .marquee span{display:flex;align-items:center;gap:48px}
+  .marquee span::after{content:"✦";color:var(--accent)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* Services */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
+  @media(max-width:900px){.grid-3{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:transform .2s, border-color .2s}
+  .card:hover{transform:translateY(-4px);border-color:var(--ink)}
+  .ic{width:48px;height:48px;border-radius:14px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:20px}
+  .ic svg{width:24px;height:24px}
+  .card h3{font-size:22px;font-weight:700;margin-bottom:10px}
+  .card p{color:var(--ink-2);font-size:15.5px}
+  .card ul{list-style:none;margin-top:16px;display:grid;gap:7px;font-size:14.5px}
+  .card li{display:flex;gap:9px;align-items:flex-start}
+  .card li::before{content:"✓";color:var(--green);font-weight:700}
+
+  /* Work */
+  #work{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .work-card{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--bg);display:flex;flex-direction:column}
+  .work-card .preview{height:240px;border-bottom:1px solid var(--line);background:#fff}
+  .work-body{padding:22px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .tag{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2)}
+  .work-body h3{font-size:22px;font-weight:700}
+  .work-body p{font-size:15px;color:var(--ink-2);flex:1}
+  .work-link{font-weight:600;display:inline-flex;gap:6px;align-items:center;margin-top:8px;color:var(--accent)}
+  .work-link:hover{text-decoration:underline}
+
+  /* Pricing */
+  .price-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .toggle{display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px}
+  .toggle button{border:0;background:none;padding:9px 18px;border-radius:999px;font:600 14px Inter;cursor:pointer;color:var(--ink-2)}
+  .toggle button.on{background:var(--ink);color:#fff}
+  .plan{position:relative;display:flex;flex-direction:column}
+  .plan.pop{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .plan.pop p,.plan.pop .per{color:#bdb8b0}
+  .pop-tag{position:absolute;top:-13px;left:28px;background:var(--accent);color:#fff;font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;letter-spacing:.04em}
+  .price{font-family:"Bricolage Grotesque";font-size:46px;font-weight:800;margin:14px 0 2px}
+  .price s{font-size:20px;opacity:.45;font-weight:500;margin-left:8px}
+  .per{font-size:14px;color:var(--ink-2)}
+  .plan ul{flex:1}
+  .plan .btn{margin-top:26px;justify-content:center}
+  .plan.pop .btn{background:var(--accent);border-color:var(--accent);color:#fff}
+  .note{margin-top:26px;font-size:14.5px;color:var(--ink-2);text-align:center}
+
+  /* Process */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:52px;counter-reset:s}
+  @media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.steps{grid-template-columns:1fr}}
+  .step{border-top:3px solid var(--ink);padding-top:20px}
+  .step::before{counter-increment:s;content:"0" counter(s);font-family:"Bricolage Grotesque";font-weight:800;font-size:40px;color:var(--accent);display:block;margin-bottom:8px}
+  .step h3{font-size:20px;font-weight:700;margin-bottom:6px}
+  .step p{font-size:15px;color:var(--ink-2)}
+
+  /* Stack */
+  .stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .stack span{background:var(--paper);border:1px solid var(--line);padding:9px 16px;border-radius:999px;font-weight:500;font-size:14.5px}
+
+  /* FAQ */
+  .faq{max-width:780px;margin-top:40px}
+  details{border-bottom:1px solid var(--line);padding:20px 0}
+  summary{font-weight:600;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:24px;line-height:1;color:var(--accent);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--ink-2);margin-top:10px;font-size:16px}
+
+  /* Contact */
+  #contact{background:var(--ink);color:#fff}
+  #contact .lead{color:#bdb8b0}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  @media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+  form{background:#1f1f1f;border:1px solid #333;border-radius:var(--radius);padding:28px;display:grid;gap:14px}
+  label{font-size:13.5px;font-weight:600;color:#cfcac2;display:grid;gap:6px}
+  input,select,textarea{font:inherit;font-size:15.5px;padding:13px 14px;border-radius:12px;border:1px solid #3a3a3a;background:#141414;color:#fff;width:100%}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);border-color:transparent}
+  textarea{min-height:90px;resize:vertical}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){.row{grid-template-columns:1fr}}
+  .form-out{display:none;background:#143d26;border:1px solid #1f9d55;border-radius:12px;padding:14px;font-size:14.5px}
+  .form-out a{color:#7ef0ab;font-weight:600;text-decoration:underline}
+  .contact-list{display:grid;gap:14px;margin-top:34px}
+  .contact-list a,.contact-list div{display:flex;align-items:center;gap:14px;font-size:17px}
+  .contact-list .ci{width:44px;height:44px;border-radius:12px;background:#262626;display:grid;place-items:center;flex-shrink:0}
+  .contact-list svg{width:20px;height:20px}
+  .guarantee{margin-top:30px;padding:18px;border:1px dashed #555;border-radius:14px;font-size:15px;color:#cfcac2}
+  .guarantee strong{color:#fff}
+
+  footer{background:var(--ink);color:#8f8a83;border-top:1px solid #2a2a2a;padding:26px 0;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  /* Floating WhatsApp */
+  .wa-float{position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px -6px rgba(37,211,102,.6);transition:transform .2s}
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:30px;height:30px}
+
+  .reveal{opacity:0;transform:translateY(34px) scale(.98);transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ===== Animation layer ===== */
+  /* Scroll progress */
+  .progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--accent),#ffb01f);z-index:100}
+
+  /* Hero background blobs + grid */
+  .hero{position:relative;overflow:hidden;isolation:isolate}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;z-index:-2;will-change:transform}
+  .blob.b1{width:460px;height:460px;background:#ffc4a8;top:-140px;right:-80px;animation:drift1 16s ease-in-out infinite}
+  .blob.b2{width:380px;height:380px;background:#ffe2a1;bottom:-160px;left:-120px;animation:drift2 19s ease-in-out infinite}
+  .blob.b3{width:260px;height:260px;background:#c9f0d8;top:40%;left:45%;animation:drift3 22s ease-in-out infinite;opacity:.4}
+  @keyframes drift1{50%{transform:translate(-120px,90px) scale(1.15)}}
+  @keyframes drift2{50%{transform:translate(140px,-70px) scale(1.2)}}
+  @keyframes drift3{50%{transform:translate(-90px,-60px) scale(.85)}}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 20%,transparent 75%);opacity:.6}
+
+  /* Headline word reveal */
+  .hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em}
+  .hero h1 .w > span{display:inline-block;transform:translateY(110%);animation:wordUp .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--d)}
+  @keyframes wordUp{to{transform:none}}
+  .hero h1 .hl::after{transform:scaleX(0);transform-origin:0 50%;animation:underline .8s 1.2s cubic-bezier(.6,0,.2,1) forwards}
+  @keyframes underline{to{transform:scaleX(1)}}
+  .fade-up{opacity:0;transform:translateY(18px);animation:fadeUp .8s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
+  @keyframes fadeUp{to{opacity:1;transform:none}}
+
+  /* Typing line */
+  .typer{font-family:"Bricolage Grotesque";font-size:clamp(20px,2.4vw,26px);font-weight:700;margin-top:18px;color:var(--ink-2)}
+  .typer #typed{color:var(--ink);background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+  .caret{display:inline-block;width:3px;height:1em;background:var(--accent);margin-left:3px;vertical-align:-.12em;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  /* Floating hero cards */
+  .hero-visual{perspective:1200px}
+  .parallax{transition:transform .25s ease-out;transform-style:preserve-3d;position:absolute;inset:0}
+  @keyframes bob{50%{translate:0 -12px}}
+  .float-1,.float-2,.float-3{opacity:0;animation:popIn .9s cubic-bezier(.2,.9,.3,1.3) forwards,bob 6s ease-in-out 1.6s infinite}
+  .float-1{animation-delay:.5s,1.4s}.float-2{animation-delay:1s,1.9s}.float-3{animation-delay:1.4s,2.3s}
+  @keyframes popIn{from{opacity:0;transform:translateY(40px) scale(.9)}to{opacity:1;transform:none}}
+
+  /* Mockup build-in + shimmer */
+  .build .s-h,.build .s-h2,.build .s-p,.build .s-logo{transform-origin:0 50%;animation:grow .9s cubic-bezier(.2,.8,.2,1) both}
+  .build .s-h{animation-delay:.2s}.build .s-h2{animation-delay:.35s}.build .s-p{animation-delay:.5s}
+  .build .s-btn{animation:pop .5s .7s cubic-bezier(.2,.9,.3,1.5) both}
+  .build .s-cards div{animation:pop .5s cubic-bezier(.2,.9,.3,1.4) both}
+  .build .s-cards div:nth-child(1){animation-delay:.85s}.build .s-cards div:nth-child(2){animation-delay:.95s}.build .s-cards div:nth-child(3){animation-delay:1.05s}
+  @keyframes grow{from{transform:scaleX(0)}}
+  @keyframes pop{from{transform:scale(0);opacity:0}}
+  .screen::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.45) 50%,transparent 60%);background-size:250% 100%;animation:shimmer 4.5s ease-in-out infinite;pointer-events:none}
+  @keyframes shimmer{from{background-position:130% 0}to{background-position:-130% 0}}
+  .s-btn{animation:btnPulse 2.4s ease-in-out infinite}
+  @keyframes btnPulse{50%{box-shadow:0 0 0 6px rgba(255,90,31,.18)}}
+
+  /* Chat bubble sequence */
+  .float-3{min-width:250px;flex-direction:column;align-items:stretch;gap:8px;padding:14px}
+  .chat-head{display:flex;align-items:center;gap:10px;font-size:13px}
+  .chat-head small{display:block;color:var(--green);font-weight:500;font-size:11px}
+  .bubble{background:#e7fbe9;border-radius:12px 12px 12px 4px;padding:8px 12px;font-size:13.5px;font-weight:500;min-height:36px;display:flex;align-items:center}
+  .typing-dots{display:flex;gap:4px}.typing-dots i{width:6px;height:6px;border-radius:50%;background:#7aa985;animation:tdot 1s infinite}
+  .typing-dots i:nth-child(2){animation-delay:.15s}.typing-dots i:nth-child(3){animation-delay:.3s}
+  @keyframes tdot{30%{transform:translateY(-4px);opacity:.5}}
+  .bubble-in{animation:bubbleIn .4s cubic-bezier(.2,.9,.3,1.3)}
+  @keyframes bubbleIn{from{transform:scale(.8);opacity:0}}
+  .notif{position:absolute;top:-16px;right:30px;background:var(--ink);color:#fff;font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:999px;display:flex;gap:7px;align-items:center;opacity:0;transform:translateY(10px) scale(.9);transition:.4s cubic-bezier(.2,.9,.3,1.3);z-index:3;white-space:nowrap}
+  .notif.show{opacity:1;transform:none}
+  .notif b{width:8px;height:8px;border-radius:50%;background:#25d366}
+
+  /* Spark line draw */
+  .float-2 polyline{stroke-dasharray:300;stroke-dashoffset:300;animation:draw 2s 1.6s ease-out forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+
+  /* Buttons: shine + magnetic */
+  .btn{position:relative;overflow:hidden;will-change:transform}
+  .btn-primary::before,.plan.pop .btn::before{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:shine 3.2s ease-in-out infinite}
+  @keyframes shine{0%,60%{left:-80%}100%{left:130%}}
+  .btn svg{transition:transform .25s}
+  .btn:hover svg{transform:translateX(3px) rotate(-6deg)}
+
+  /* Cards: tilt + spotlight */
+  .card,.work-card{position:relative;transform-style:preserve-3d;will-change:transform}
+  .card::after,.work-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(255,90,31,.13),transparent 45%)}
+  .card:hover::after,.work-card:hover::after{opacity:1}
+  .card.tilting,.work-card.tilting{transition:transform .08s linear, border-color .2s}
+  .ic{transition:transform .4s cubic-bezier(.2,.9,.3,1.5)}
+  .card:hover .ic{transform:rotate(-8deg) scale(1.12)}
+  .work-card .preview{overflow:hidden}
+  .work-card .browser{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .work-card:hover .browser{transform:scale(1.05) translateY(-6px)}
+
+  /* Popular plan: animated border glow */
+  .plan.pop{background:linear-gradient(var(--ink),var(--ink)) padding-box,conic-gradient(from var(--ang,0deg),var(--accent),#ffb01f,#ffe2a1,var(--accent)) border-box;border:2px solid transparent;animation:spin 4s linear infinite}
+  @property --ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+  @keyframes spin{to{--ang:360deg}}
+  .pop-tag{animation:tagBounce 2s ease-in-out infinite}
+  @keyframes tagBounce{50%{transform:translateY(-4px)}}
+  .price .num{display:inline-block}
+  .price.flip .num{animation:flipIn .45s cubic-bezier(.2,.9,.3,1.3)}
+  @keyframes flipIn{from{transform:rotateX(90deg);opacity:0}}
+
+  /* Steps: line fill */
+  .step{border-top:3px solid var(--line);position:relative}
+  .step::after{content:"";position:absolute;top:-3px;left:0;height:3px;width:100%;background:var(--ink);transform:scaleX(0);transform-origin:0 50%;transition:transform 1s cubic-bezier(.6,0,.2,1);transition-delay:calc(var(--d,0s) + .2s)}
+  .step.in::after{transform:scaleX(1)}
+
+  /* Stack chips wave */
+  .stack span{transition:transform .25s, background .25s, color .25s}
+  .stack span:hover{transform:translateY(-4px) rotate(-2deg);background:var(--ink);color:#fff}
+  .stack.in span{animation:chip .6s cubic-bezier(.2,.9,.3,1.4) both;animation-delay:calc(var(--i) * 60ms)}
+  @keyframes chip{from{opacity:0;transform:translateY(16px) scale(.8)}}
+
+  /* Contact heading gradient */
+  #contact h2{background:linear-gradient(90deg,#fff 0%,#fff 40%,#ffb38f 50%,#fff 60%,#fff 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:textShine 5s linear infinite}
+  @keyframes textShine{from{background-position:100% 0}to{background-position:-150% 0}}
+
+  /* WhatsApp float: ring + tooltip */
+  .wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:ring 2s ease-out infinite}
+  @keyframes ring{to{transform:scale(1.7);opacity:0}}
+  .wa-tip{position:fixed;right:88px;bottom:30px;z-index:60;background:var(--paper);border:1px solid var(--line);padding:10px 14px;border-radius:14px 14px 4px 14px;font-size:14px;font-weight:600;box-shadow:0 10px 30px -10px rgba(0,0,0,.25);opacity:0;transform:translateX(16px) scale(.9);transition:.45s cubic-bezier(.2,.9,.3,1.3);pointer-events:none}
+  .wa-tip.show{opacity:1;transform:none}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal,.fade-up,.float-1,.float-2,.float-3{opacity:1!important;transform:none!important}
+    .hero h1 .w > span{transform:none}
+    .float-2 polyline{stroke-dashoffset:0}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43a9.38 9.38 0 0 1 9.43 9.44c0 5.2-4.24 9.43-9.44 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.72C5.8.72.7 5.8.7 12.06c0 2 .52 3.95 1.52 5.67L.6 23.6l6.01-1.58a11.33 11.33 0 0 0 5.43 1.38h.01c6.25 0 11.34-5.09 11.34-11.34 0-3.03-1.18-5.88-3.32-8.02"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<div class="progress" id="progress"></div>
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo"><span class="logo-mark" data-initials>G</span><span data-name>Gaurav</span></a>
+    <div class="nav-links">
+      <a href="#services">Services</a><a href="#work">Work</a><a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#faq">FAQ</a>
+    </div>
+    <a class="btn btn-dark" data-wa href="#contact"><svg><use href="#wa"/></svg>WhatsApp</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge fade-up" style="--d:.1s"><span class="dot"></span><span data-availability>Taking 5 new projects this week</span></div>
+      <h1 id="hero-h1">Your business website, <span class="hl">live in 48h.</span></h1>
+      <div class="typer fade-up" style="--d:1s">Built for <span id="typed"></span><span class="caret"></span></div>
+      <p class="fade-up" style="--d:1.2s">I build fast, mobile-friendly websites and web apps for gyms, clinics, cafés, salons, coaching centres and other local businesses. <strong>You see a free preview first</strong> and pay only if you like it.</p>
+      <div class="hero-ctas fade-up" style="--d:1.4s">
+        <a class="btn btn-primary" data-wa data-wa-msg="Hi! I'd like a free website preview for my business." href="#contact"><svg><use href="#wa"/></svg>Get a free preview</a>
+        <a class="btn" href="#work">See my work <svg><use href="#arrow"/></svg></a>
+      </div>
+      <div class="trust fade-up" style="--d:1.6s">
+        <div><strong><span data-count="48">0</span>h</strong>delivery</div>
+        <div><strong><span data-count="100">0</span>%</strong>mobile-friendly</div>
+        <div><strong>₹0</strong>to see a preview</div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+     <div class="parallax" id="parallax">
+      <div class="float float-1">
+        <div class="browser">
+          <div class="bar"><i></i><i></i><i></i><span>yourbusiness.in</span></div>
+          <div class="screen build" style="color:#141414">
+            <div class="s-nav"><div class="s-logo" style="background:#141414"></div><div class="s-links"><b></b><b></b><b></b></div></div>
+            <div class="s-h" style="background:#141414"></div>
+            <div class="s-h2" style="background:#ff5a1f"></div>
+            <div class="s-p"></div><div class="s-p" style="width:50%"></div>
+            <div class="s-btn" style="background:#ff5a1f"></div>
+            <div class="s-cards"><div style="background:#ffe7dc"></div><div style="background:#f1ece4"></div><div style="background:#141414"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="float float-2">
+        <div style="font-size:13px;color:var(--ink-2);margin-bottom:6px">New enquiries this week</div>
+        <div class="display" style="font-size:38px;font-weight:800">+23</div>
+        <svg viewBox="0 0 200 50" style="width:100%;height:46px;margin-top:6px"><polyline fill="none" stroke="#ff5a1f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="0,44 30,38 60,40 90,28 120,30 150,16 200,6"/></svg>
+        <div style="font-size:11px;color:#9a948b">Example dashboard</div>
+      </div>
+      <div class="float float-3">
+        <div class="notif" id="notif"><b></b>New enquiry!</div>
+        <div class="chat-head"><span class="wa-ico"><svg><use href="#wa"/></svg></span><div><strong>New customer</strong><small>online</small></div></div>
+        <div class="bubble" id="bubble"><span class="typing-dots"><i></i><i></i><i></i></span></div>
+      </div>
+     </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip" aria-hidden="true">
+  <div class="marquee">
+    <span>Customers Google you before they visit</span><span>No website = lost customers</span><span>WhatsApp bookings, 24/7</span><span>Show up on Google Maps</span><span>Look as professional as the big brands</span>
+    <span>Customers Google you before they visit</span><span>No website = lost customers</span><span>WhatsApp bookings, 24/7</span><span>Show up on Google Maps</span><span>Look as professional as the big brands</span>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <span class="eyebrow">What I build</span>
+    <h2>Everything your business needs online, without the agency price.</h2>
+    <p class="lead">I'm a full-stack developer (MERN). That means I can do more than a pretty page: bookings, dashboards and custom tools too.</p>
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg></div>
+        <h3>Business Websites</h3>
+        <p>A clean, fast site that makes customers trust you and contact you.</p>
+        <ul><li>Mobile-first design</li><li>WhatsApp &amp; call buttons</li><li>Google Maps &amp; reviews</li><li>Basic SEO setup</li></ul>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18M9 16l2 2 4-4"/></svg></div>
+        <h3>Booking &amp; Appointments</h3>
+        <p>Let customers book slots, classes or tables online, any time of day.</p>
+        <ul><li>Online booking form</li><li>Instant WhatsApp/email alerts</li><li>Manage bookings in one place</li></ul>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+        <h3>Admin Panels &amp; CRMs</h3>
+        <p>Edit your own content, track leads and customers, no coding needed.</p>
+        <ul><li>Update menu, prices, photos</li><li>Lead &amp; customer tracking</li><li>Simple reports</li></ul>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <h3>Custom Web Apps</h3>
+        <p>Have an idea or an internal tool you need? I build full-stack MVPs fast.</p>
+        <ul><li>React + Node + MongoDB</li><li>Login, payments, APIs</li><li>Deployed and ready to use</li></ul>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5z"/></svg></div>
+        <h3>Content &amp; Social Media</h3>
+        <p>Website copy, Instagram captions and a month of posts, written for you.</p>
+        <ul><li>Website text that sells</li><li>30-day post calendar</li><li>Captions &amp; hashtags</li></ul>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z"/></svg></div>
+        <h3>Fixes &amp; Redesigns</h3>
+        <p>Old, slow or broken website? I'll fix it or rebuild it properly.</p>
+        <ul><li>Speed &amp; mobile fixes</li><li>Bug fixes</li><li>Modern redesign</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <span class="eyebrow">Recent work</span>
+    <h2>Sample websites built for real business types.</h2>
+    <p class="lead">Tap any one to try the live site on your phone. Yours would be made for your business: your name, photos, services and prices.</p>
+    <div class="grid-3" id="work-grid"></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="price-head">
+      <div>
+        <span class="eyebrow">Simple pricing</span>
+        <h2>One fixed price. No surprises.</h2>
+      </div>
+      <div class="toggle" role="tablist" aria-label="Currency">
+        <button class="on" data-cur="inr" role="tab" aria-selected="true">₹ INR</button>
+        <button data-cur="usd" role="tab" aria-selected="false">$ USD</button>
+      </div>
+    </div>
+    <div class="grid-3" id="plans"></div>
+    <p class="note">Launch offer for this month. Domain and hosting help included; domain cost (about ₹800/year) is paid by you so <strong>you own it</strong>.</p>
+  </div>
+</section>
+
+<section id="process" style="padding-top:20px">
+  <div class="wrap">
+    <span class="eyebrow">How it works</span>
+    <h2>From first message to live website in 2 days.</h2>
+    <div class="steps">
+      <div class="step reveal"><h3>Free preview</h3><p>Send me your business name. I make a preview of your homepage, free.</p></div>
+      <div class="step reveal"><h3>Approve &amp; 50%</h3><p>Like it? Pay 50% to start. Share your photos, services and prices.</p></div>
+      <div class="step reveal"><h3>Live in 48h</h3><p>I build the full site and put it online. You ask for changes, I make them.</p></div>
+      <div class="step reveal"><h3>Pay the rest</h3><p>Pay the balance when you're happy. You get full ownership and a how-to guide.</p></div>
+    </div>
+    <div class="stack reveal-stack" aria-label="Technologies">
+      <span>React</span><span>Next.js</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Tailwind CSS</span><span>Razorpay / Stripe</span><span>Vercel</span><span>Google Maps</span><span>WhatsApp API</span>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:20px">
+  <div class="wrap">
+    <span class="eyebrow">Questions</span>
+    <h2>Good questions, honest answers.</h2>
+    <div class="faq">
+      <details><summary>Do I really pay nothing for the preview?</summary><p>Yes. I make a homepage preview with your business name for free. If you don't like it, you owe nothing.</p></details>
+      <details><summary>Will I own the website?</summary><p>Yes, 100%. The domain is registered in your name and you get all the code and logins.</p></details>
+      <details><summary>Can I change things later myself?</summary><p>With the Pro plan you get an admin panel to update text, prices and photos yourself. On other plans, small changes in the first 30 days are free.</p></details>
+      <details><summary>What do I need to give you?</summary><p>Your business name, logo (if you have one), phone number, address, services/prices and a few photos. I can write all the text for you.</p></details>
+      <details><summary>What about hosting and maintenance?</summary><p>Hosting for a simple business site is usually free or very cheap, and I set it all up. Optional maintenance is available monthly if you want me to handle updates.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow">Let's talk</span>
+      <h2>Get your free website preview today.</h2>
+      <p class="lead">Fill in the form, or just message me on WhatsApp. I usually reply within an hour.</p>
+      <div class="contact-list" id="contact-list"></div>
+      <div class="guarantee"><strong>No-risk promise:</strong> see your preview first. If you don't love it, you don't pay anything.</div>
+    </div>
+    <form id="lead-form" novalidate>
+      <div class="row">
+        <label>Your name<input name="name" required placeholder="Rahul Sharma" /></label>
+        <label>Business name<input name="business" required placeholder="FitZone Gym" /></label>
+      </div>
+      <label>Type of business
+        <select name="type">
+          <option>Gym / Fitness</option><option>Clinic / Doctor</option><option>Café / Restaurant</option><option>Salon / Spa</option><option>Coaching / Tuition</option><option>Real Estate</option><option>Shop / Retail</option><option>Startup / Web app</option><option>Other</option>
+        </select>
+      </label>
+      <label>What do you need?
+        <select name="need">
+          <option>New website</option><option>Website + booking system</option><option>Admin panel / CRM</option><option>Custom web app</option><option>Fix or redesign my site</option>
+        </select>
+      </label>
+      <label>Anything else? (optional)<textarea name="msg" placeholder="E.g. I want customers to book trial classes online"></textarea></label>
+      <button class="btn btn-primary" type="submit" style="justify-content:center"><svg><use href="#wa"/></svg>Send on WhatsApp</button>
+      <div class="form-out" id="form-out" role="status"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>© <span id="yr"></span> <span data-name>Gaurav</span>. Websites &amp; web apps for growing businesses.</span><span data-city></span></div>
+</footer>
+
+<div class="wa-tip" id="wa-tip">👋 Want a free website preview?</div>
+<a class="wa-float" data-wa data-wa-msg="Hi! I saw your website and I'm interested." href="#contact" aria-label="Chat on WhatsApp"><svg><use href="#wa"/></svg></a>
+
+<script>
+/* ================================================================
+   ✏️  EDIT EVERYTHING HERE. The rest of the page updates itself.
+   ================================================================ */
+const SITE = {
+  name: "Gaurav",
+  city: "India · Working with clients everywhere",
+  whatsapp: "919128041000",      // country code + number, no + or spaces
+  phoneDisplay: "+91 91280 41000",
+  email: "gs1663221@gmail.com",
+  linkedin: "",                  // e.g. "https://linkedin.com/in/yourname"
+  github: "",                    // e.g. "https://github.com/yourname"
+  availability: "Taking 5 new projects this week",
+
+  // Replace each url with your deployed demo link (e.g. https://gym-demo.vercel.app)
+  demos: [
+    { tag:"Gym & Fitness", title:"IronPulse Gym", desc:"Membership plans, class timetable, trainer profiles and a free-trial booking form.", url:"#",
+      colors:{ bg:"#0f0f10", ink:"#ffffff", a:"#c6ff3d", b:"#262628" } },
+    { tag:"Clinic & Healthcare", title:"CarePlus Clinic", desc:"Doctor profiles, treatments, timings and online appointment booking with WhatsApp alerts.", url:"#",
+      colors:{ bg:"#f2f8fb", ink:"#0d3b54", a:"#1a8cc9", b:"#d6ecf6" } },
+    { tag:"Café & Restaurant", title:"Brew & Bloom Café", desc:"Digital menu, photo gallery, table reservations and Google Maps directions.", url:"#",
+      colors:{ bg:"#fbf3e8", ink:"#3b2414", a:"#c8692b", b:"#efdcc4" } }
+  ],
+
+  plans: [
+    { name:"Starter", desc:"A professional one-page site to get you found.", inr:12000, inrWas:20000, usd:199, usdWas:349,
+      items:["1-page website","Mobile-friendly design","WhatsApp & call buttons","Google Maps location","Live in 48 hours"] },
+    { name:"Business", desc:"A complete site that brings in enquiries.", inr:20000, inrWas:32000, usd:349, usdWas:549, popular:true,
+      items:["Up to 5 pages","Booking / enquiry form","Photo gallery","Basic SEO + Google setup","Admin panel to edit content","30 days free changes"] },
+    { name:"Custom App", desc:"Bookings, dashboards, CRMs or your own web app.", inr:40000, usd:699, from:true,
+      items:["Full-stack MERN build","Login & user accounts","Payments (Razorpay/Stripe)","Custom dashboard","Deployment & handover"] }
+  ]
+};
+
+/* ---------------- render (no need to edit below) ---------------- */
+const waLink = (msg) => `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(msg || "Hi! I'm interested in a website for my business.")}`;
+const initials = SITE.name.split(/\s+/).map(w => w[0]).join("").slice(0,2).toUpperCase();
+
+document.querySelectorAll("[data-name]").forEach(el => el.textContent = SITE.name);
+document.querySelectorAll("[data-initials]").forEach(el => el.textContent = initials);
+document.querySelectorAll("[data-city]").forEach(el => el.textContent = SITE.city);
+document.querySelectorAll("[data-availability]").forEach(el => el.textContent = SITE.availability);
+document.querySelectorAll("[data-wa]").forEach(el => { el.href = waLink(el.dataset.waMsg); el.target = "_blank"; el.rel = "noopener"; });
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+// Work cards with CSS mini-mockups
+document.getElementById("work-grid").innerHTML = SITE.demos.map(d => {
+  const c = d.colors;
+  const live = d.url && d.url !== "#";
+  return `<article class="work-card reveal">
+    <div class="preview"><div class="browser">
+      <div class="bar"><i></i><i></i><i></i><span>${d.title.toLowerCase().replace(/[^a-z]+/g,"")}.in</span></div>
+      <div class="screen" style="background:${c.bg};color:${c.ink}">
+        <div class="s-nav"><div class="s-logo" style="background:${c.ink}"></div><div class="s-links"><b></b><b></b><b></b></div></div>
+        <div class="s-h" style="background:${c.ink}"></div>
+        <div class="s-h2" style="background:${c.a}"></div>
+        <div class="s-p"></div>
+        <div class="s-btn" style="background:${c.a}"></div>
+        <div class="s-cards"><div style="background:${c.b}"></div><div style="background:${c.b}"></div><div style="background:${c.a}"></div></div>
+      </div></div></div>
+    <div class="work-body">
+      <span class="tag">${d.tag}</span><h3>${d.title}</h3><p>${d.desc}</p>
+      ${live ? `<a class="work-link" href="${d.url}" target="_blank" rel="noopener">View live site <svg width="18" height="18"><use href="#arrow"/></svg></a>`
+             : `<span class="work-link" style="color:var(--ink-2)">Live demo link coming soon</span>`}
+    </div></article>`;
+}).join("");
+
+// Pricing with currency toggle
+const fmt = (n, cur) => cur === "inr" ? "₹" + n.toLocaleString("en-IN") : "$" + n.toLocaleString("en-US");
+function renderPlans(cur, animate){
+  document.getElementById("plans").innerHTML = SITE.plans.map(p => {
+    const price = p[cur], was = p[cur + "Was"];
+    const msg = `Hi! I'm interested in the ${p.name} plan (${fmt(price,cur)}).`;
+    return `<div class="card plan ${p.popular ? "pop" : ""}">
+      ${p.popular ? `<span class="pop-tag">MOST POPULAR</span>` : ""}
+      <h3>${p.name}</h3><p>${p.desc}</p>
+      <div class="price ${animate ? "flip" : ""}">${p.from ? `<span style="font-size:18px;font-weight:600">from </span>` : ""}<span class="num">${fmt(price,cur)}</span>${was ? `<s>${fmt(was,cur)}</s>` : ""}</div>
+      <div class="per">one-time payment</div>
+      <ul>${p.items.map(i => `<li>${i}</li>`).join("")}</ul>
+      <a class="btn" href="${waLink(msg)}" target="_blank" rel="noopener">Choose ${p.name}</a>
+    </div>`;
+  }).join("");
+}
+renderPlans("inr");
+document.querySelectorAll(".toggle button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".toggle button").forEach(x => { x.classList.remove("on"); x.setAttribute("aria-selected","false"); });
+  b.classList.add("on"); b.setAttribute("aria-selected","true");
+  renderPlans(b.dataset.cur, true); bindTilt();
+}));
+
+// Contact list
+const cl = [];
+cl.push(`<a href="${waLink()}" target="_blank" rel="noopener"><span class="ci" style="background:#25d366"><svg><use href="#wa"/></svg></span>${SITE.phoneDisplay}</a>`);
+cl.push(`<a href="mailto:${SITE.email}"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>${SITE.email}</a>`);
+if (SITE.linkedin) cl.push(`<a href="${SITE.linkedin}" target="_blank" rel="noopener"><span class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"/></svg></span>LinkedIn</a>`);
+if (SITE.github) cl.push(`<a href="${SITE.github}" target="_blank" rel="noopener"><span class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></span>GitHub</a>`);
+document.getElementById("contact-list").innerHTML = cl.join("");
+
+// Lead form → WhatsApp message
+document.getElementById("lead-form").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  const out = document.getElementById("form-out");
+  if (!f.get("name").trim() || !f.get("business").trim()) {
+    out.style.display = "block"; out.style.background = "#3d1414"; out.style.borderColor = "#c94a4a";
+    out.textContent = "Please add your name and business name.";
+    return;
+  }
+  const msg = `Hi ${SITE.name}! I'm ${f.get("name")} from ${f.get("business")} (${f.get("type")}).\nI need: ${f.get("need")}.${f.get("msg").trim() ? "\n" + f.get("msg").trim() : ""}\nPlease send me a free preview.`;
+  const url = waLink(msg);
+  out.style.display = "block"; out.style.background = ""; out.style.borderColor = "";
+  out.innerHTML = `Your message is ready. <a href="${url}" target="_blank" rel="noopener">Tap here to open WhatsApp and send it →</a>`;
+});
+
+// ================= ANIMATIONS =================
+const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fine = window.matchMedia("(pointer: fine)").matches;
+
+// Headline: word-by-word reveal
+(function(){
+  const h1 = document.getElementById("hero-h1"); let i = 0;
+  const wrap = (txt) => txt.split(/(\s+)/).map(w => w.trim() ? `<span class="w"><span style="--d:${(0.15 + i++ * 0.09).toFixed(2)}s">${w}</span></span>` : w).join("");
+  h1.innerHTML = [...h1.childNodes].map(n => n.nodeType === 3 ? wrap(n.textContent)
+    : `<span class="hl">${wrap(n.textContent)}</span>`).join("");
+})();
+
+// Typing effect
+(function(){
+  const el = document.getElementById("typed");
+  const words = ["gyms 💪","clinics 🩺","cafés ☕","salons 💇","coaching centres 📚","real estate 🏠","startups 🚀"];
+  if (reduce) { el.textContent = words[0]; return; }
+  let w = 0, c = 0, del = false;
+  (function tick(){
+    const word = words[w];
+    el.textContent = [...word].slice(0, c).join("");
+    if (!del && c < [...word].length) { c++; setTimeout(tick, 85); }
+    else if (!del) { del = true; setTimeout(tick, 1500); }
+    else if (c > 0) { c--; setTimeout(tick, 40); }
+    else { del = false; w = (w + 1) % words.length; setTimeout(tick, 300); }
+  })();
+  setTimeout(()=>{}, 0);
+})();
+
+// Count-up stats
+function countUp(el){
+  const end = +el.dataset.count, dur = 1400, t0 = performance.now();
+  (function f(t){ const k = Math.min(1, (t - t0) / dur); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(f); })(t0);
+}
+setTimeout(() => document.querySelectorAll("[data-count]").forEach(el => reduce ? el.textContent = el.dataset.count : countUp(el)), 1600);
+
+// WhatsApp chat sequence in hero
+(function(){
+  const bubble = document.getElementById("bubble"), notif = document.getElementById("notif");
+  const msgs = ["Is a table free at 8pm tonight?","Can I book a free trial class?","What are the clinic timings?","Do you have a slot on Sunday?"];
+  let i = 0;
+  const dots = '<span class="typing-dots"><i></i><i></i><i></i></span>';
+  function cycle(){
+    bubble.innerHTML = dots;
+    setTimeout(() => {
+      bubble.innerHTML = `<span class="bubble-in">${msgs[i++ % msgs.length]}</span>`;
+      notif.classList.add("show");
+      setTimeout(() => notif.classList.remove("show"), 1800);
+    }, 1400);
+    setTimeout(cycle, 4600);
+  }
+  if (reduce) bubble.textContent = msgs[0]; else setTimeout(cycle, 2200);
+})();
+
+// Hero parallax on mouse
+if (fine && !reduce) {
+  const hero = document.querySelector(".hero"), px = document.getElementById("parallax");
+  hero.addEventListener("mousemove", e => {
+    const r = hero.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    px.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 8}deg) translate(${x * 14}px, ${y * 10}px)`;
+    hero.querySelectorAll(".blob").forEach((b, k) => b.style.translate = `${x * (30 + k * 20)}px ${y * (30 + k * 20)}px`);
+  });
+  hero.addEventListener("mouseleave", () => px.style.transform = "");
+}
+
+// Card tilt + spotlight
+function bindTilt(){
+  if (!fine || reduce) return;
+  document.querySelectorAll(".card, .work-card").forEach(card => {
+    if (card.dataset.tilt) return; card.dataset.tilt = 1;
+    card.addEventListener("mousemove", e => {
+      const r = card.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      card.style.setProperty("--mx", x + "px"); card.style.setProperty("--my", y + "px");
+      const rx = ((y / r.height) - .5) * -8, ry = ((x / r.width) - .5) * 8;
+      card.classList.add("tilting");
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+    });
+    card.addEventListener("mouseleave", () => { card.classList.remove("tilting"); card.style.transform = ""; });
+  });
+}
+bindTilt();
+
+// Magnetic buttons
+if (fine && !reduce) document.querySelectorAll(".btn-primary, .hero .btn, .wa-float").forEach(b => {
+  b.addEventListener("mousemove", e => { const r = b.getBoundingClientRect(); b.style.translate = `${(e.clientX - r.left - r.width/2) * .18}px ${(e.clientY - r.top - r.height/2) * .25}px`; });
+  b.addEventListener("mouseleave", () => b.style.translate = "");
+});
+
+// Stagger reveal delays within each grid
+document.querySelectorAll(".grid-3, .steps").forEach(g => [...g.children].forEach((c, i) => { c.classList.add("reveal"); c.style.setProperty("--d", (i % 3) * 0.12 + "s"); }));
+document.querySelectorAll(".stack span").forEach((s, i) => s.style.setProperty("--i", i));
+document.querySelectorAll("section h2, section .lead, section .eyebrow").forEach(el => el.classList.add("reveal"));
+
+// Reveal on scroll
+const io = "IntersectionObserver" in window && !reduce ? new IntersectionObserver(es => es.forEach(en => {
+  if (!en.isIntersecting) return;
+  en.target.classList.add("in");
+  en.target.querySelectorAll(".screen").forEach(s => s.classList.add("build"));
+  io.unobserve(en.target);
+}), { threshold: .12, rootMargin: "0px 0px -40px 0px" }) : null;
+document.querySelectorAll(".reveal, .reveal-stack").forEach(el => io ? io.observe(el) : el.classList.add("in"));
+
+// Scroll progress bar
+const bar = document.getElementById("progress");
+addEventListener("scroll", () => {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  bar.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+}, { passive: true });
+
+// WhatsApp tooltip
+const tip = document.getElementById("wa-tip");
+setTimeout(() => { tip.classList.add("show"); setTimeout(() => tip.classList.remove("show"), 5000); }, 4500);
+</script>
+</body>
+</html>
